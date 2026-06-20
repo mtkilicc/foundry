@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "blueprint_root": "docs/project",
+  "blueprint_mode": "multi-file",
+  "state": "empty",
+  "agreed_at": null,
+  "agreed_by": null,
+  "approval": {
+    "project": {
+      "approved": false,
+      "approved_by": null,
+      "approved_at": null,
+      "document": "docs/project/APPROVAL.md"
+    }
+  },
+  "running_approval": {
+    "current_state": {
+      "approved": false,
+      "approved_by": null,
+      "approved_at": null,
+      "document": "docs/project/CURRENT-STATE.md"
+    },
+    "requested_state": {
+      "approved": false,
+      "approved_by": null,
+      "approved_at": null,
+      "document": "docs/project/REQUESTED-STATE.md"
+    }
+  },
+  "phases": {
+    "mvp": {
+      "status": "empty",
+      "summary": "",
+      "agreed_at": null
+    },
+    "v1": {
+      "status": "empty",
+      "summary": "",
+      "agreed_at": null
+    },
+    "v2": {
+      "status": "optional",
+      "summary": "Created only when the user asks for v2 (want_v2=yes).",
+      "agreed_at": null
+    },
+    "v3": {
+      "status": "optional",
+      "summary": "",
+      "agreed_at": null
+    }
+  },
+  "required_phases_for_foundry": ["mvp", "v1"],
+  "optional_phases": ["v2", "v3", "v4"],
+  "notes": "User and agent record explicit agreement before Foundry bootstrap. Add v4+ keys as needed. 'state' = empty | blueprint | running. Empty/Blueprint require approval.project.approved; Running requires running_approval.current_state + requested_state approved. Approval doc(s) assembled by foundry_blueprint_assemble.py."
+}

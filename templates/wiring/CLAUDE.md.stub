@@ -1,0 +1,11 @@
+@AGENTS.md
+
+## Routing — every task
+
+Before planning or editing anything:
+
+1. Read `agent/skills/SKILL.md` and follow its decision table.
+2. State which child skill you read next; follow leaf skills only when routed.
+3. Edit skills only under `agent/skills/`; ask Foundry to sync renders after edits.
+
+Rendered copies under `.claude/skills/` mirror the canonical tree — do not edit them by hand.
