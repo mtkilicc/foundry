@@ -36,9 +36,12 @@ If invoked without the router: run `../templates/intake/standalone.md`.
   without losing meaning gets deleted from the skill.
 - Every leaf specialist anchors ≥1 LEAF doc and ≥1 code file; missing
   doc → create via `../docs-gen/single-doc/SKILL.md` first.
-- **Master-expert standard:** every leaf fills the **Mastery** section
-  (contract · decisions · gotchas · extension points) — a leaf is the deep
-  expert of one component, not a generic router.
+- **Master-expert standard (two axes):** every leaf is a senior specialist in
+  its area on BOTH **capability** and **implementation**. Fill **Capability
+  mastery** (sub-capabilities · quality bar · states/edge cases · decision
+  criteria · failure modes — tech-independent) AND **Implementation mastery**
+  (contract · decisions · gotchas · extension points). Specialize by domain
+  capability, not only by technology — never a generic router or a "we use X" stub.
 - **Skill-owned evolution:** every leaf carries the **Evolution self-check**;
   after feature work it self-decides whether to evolve and self-triggers
   `foundry_skill_drift.py` → `post-job-update` → `foundry_sync.py`.

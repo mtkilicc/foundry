@@ -18,17 +18,24 @@ description: >-
    `../layer-manager/SKILL.md` first, then return here; (d) standalone
    utility skill outside routing (report generators, automation);
    (e) purpose spans domains → STOP, recommend `../full-hierarchy/SKILL.md`.
-2. INTERVIEW (skill-creator style, scaled) — what it enables; trigger
-   phrases; output format; edge cases; dependencies. Leaf docs to
-   anchor — missing → `../../docs-gen/single-doc/SKILL.md` FIRST.
+2. INTERVIEW (skill-creator style, scaled) — two axes:
+   - **Capability depth** (specialist questions, tech-independent): what are the
+     distinct sub-capabilities/operations of this area? what does "done right"
+     mean (the quality bar)? which states & edge cases must it handle? how does a
+     specialist decide between options? how is this area commonly done wrong?
+   - **Implementation:** trigger phrases; contract; decisions already made;
+     gotchas; extension points; output format; dependencies.
+   Leaf docs to anchor — missing → `../../docs-gen/single-doc/SKILL.md` FIRST.
    MCP needs → select from `../../toolkit/mcp-stack/SKILL.md` (one,
    two, or all as the task demands); not in stack → adoption protocol
    there, which pings the evaluator.
 3. DRAFT — routed leaf: `../../templates/skills/canonical-leaf.md`,
-   ≤80 lines, `tier: leaf` + `scope` in frontmatter. A leaf is a **master
-   expert** of its component: fill the **Mastery** section (contract, decisions,
-   gotchas, extension points) and the **Evolution self-check** — never ship a
-   generic router.
+   ≤80 lines, `tier: leaf` + `scope` in frontmatter. A leaf is a **senior
+   specialist** on BOTH axes: fill **Capability mastery** (sub-capabilities,
+   quality bar, states/edge cases, decision criteria, failure modes) AND
+   **Implementation mastery** (contract, decisions, gotchas, extension points),
+   plus the **Evolution self-check**. Specialize by capability, not only tech —
+   never ship a generic router or a "we use <library>" stub.
    Standalone utility: lean SKILL.md + scripts/ (deterministic steps),
    references/ (load-on-demand, "read X when Y"), assets/. Bulk lives
    in references (progressive disclosure). Description: third-person,
@@ -43,4 +50,7 @@ description: >-
 ## Verify
 name/folder match per profile; frontmatter valid; ≥1 leaf doc + ≥1
 code anchor (routed case); no rule restated; no sibling overlap; test
-prompts trigger reliably.
+prompts trigger reliably. **Capability check:** both Capability mastery and
+Implementation mastery are filled with specifics for THIS area (concrete
+sub-capabilities + quality bar + edge cases) — reject generic placeholders or a
+tech-only stub.

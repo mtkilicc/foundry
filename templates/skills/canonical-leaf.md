@@ -9,16 +9,29 @@ scope: <glob — required for orchestrator/leaf; omit for root>
 
 # <Name> (<tier label — e.g. leaf — read only when routed here>)
 
-> A leaf is the **master expert** of ONE component (a FE feature or a BE
-> service), not a generic router. It knows this component's contract, the
-> decisions already made, the traps, and how to extend it — enough that an agent
-> can ship a change here correctly without re-reading the whole codebase.
+> A leaf is the **senior specialist** of ONE area — expert on **two axes**:
+> (1) the **domain capability** itself (what doing this well requires, regardless
+> of stack) and (2) the **implementation** in THIS repo. Generic tech awareness is
+> not enough; it must hold the area to a specialist's quality bar and know the
+> operations, states, edge cases, and failure modes of the capability.
 
 ## Scope
 Owns: ...
 Does NOT own: ... (read sibling `<x>/SKILL.md` instead)
 
-## Mastery (what makes this leaf an expert, not a router)
+## Capability mastery (the domain capability — tech-independent)
+*What a senior specialist in this area always knows. Keep it specific to THIS
+capability, not generic advice.*
+- **Sub-capabilities:** the distinct operations this area must do well (the verbs
+  — e.g. auth → register · login · session refresh · password reset · MFA · lockout).
+- **Quality bar / "done right":** the standard a specialist holds it to
+  (correctness, security, UX, performance, accessibility — whichever apply here).
+- **States & edge cases (must-handle):** empty / loading / error / partial;
+  concurrency, limits, retries, recovery — the ones THIS capability must cover.
+- **Decision criteria:** how a specialist chooses between options here (when X vs Y).
+- **Capability failure modes:** the ways this area is commonly done wrong.
+
+## Implementation mastery (how it's built in THIS repo)
 - **Contract:** the inputs/outputs this component guarantees (props/API shape,
   events, states) — link the doc, state the invariants here.
 - **Key decisions already made:** the 2–4 choices a newcomer would otherwise
@@ -45,7 +58,8 @@ Does NOT own: ... (read sibling `<x>/SKILL.md` instead)
 
 ## Evolution self-check (this skill owns its own upkeep)
 After implementing a feature in this component, **before declaring done**, decide:
-did this change the Contract / Code map / decisions / triggers above, or add a
+did this change the Contract / Code map / decisions / triggers above, add a new
+**sub-capability / edge case** the Capability mastery should record, or add a
 capability the description wouldn't route to?
 - **No** → nothing to do.
 - **Yes** → this leaf must evolve. Self-trigger Foundry (do not wait to be told):

@@ -33,8 +33,11 @@ description: >-
    table + rule-vs-skill boundary table + depth decisions with
    justification. Wait for approval.
 5. WRITE — orchestrators: confirm scope → decision table → dispatch →
-   cross-cutting list. Leaves: `../../templates/skills/canonical-leaf.md`.
-   Scaffold under `agent/skills/`; write in parallel.
+   cross-cutting list. Leaves: `../../templates/skills/canonical-leaf.md` — each
+   leaf a **senior specialist on two axes**: fill **Capability mastery**
+   (sub-capabilities, quality bar, states/edge cases, decision criteria, failure
+   modes for that area) AND **Implementation mastery**. Specialize by domain
+   capability, not only by technology. Scaffold under `agent/skills/`; write in parallel.
 6. SYNC — `python ../../scripts/foundry_sync.py <repo>`; ensure
    `docs/stack/agent-tooling.md` exists with enabled targets.
 7. TALENT — `../project-talent/SKILL.md` (identity docs + structure rules +
@@ -44,7 +47,8 @@ description: >-
 - name == folder everywhere (or profile equivalent); root unscoped;
   every non-leaf has a decision table; every leaf is no-auto-invoke +
   scoped (or prose-scoped per profile).
-- Every leaf: ≥1 leaf doc + ≥1 code anchor.
+- Every leaf: ≥1 leaf doc + ≥1 code anchor; Capability mastery + Implementation
+  mastery both filled with area-specific specifics (no generic/tech-only stubs).
 - Boundary grep over all skills: "read docs first", "sync with code",
   doc-workflow, design-system, anti-pattern phrases → zero matches.
 - Routing dry-run: 5 realistic tasks (≥1 cross-cutting, ≥1 ambiguous,
