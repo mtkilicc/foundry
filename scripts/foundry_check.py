@@ -8,7 +8,8 @@ Modes:
   drift <repo_root>                run skill drift scan (--git); fail if proposals need review
   identity <repo_root>             verify project-unique identity docs + fingerprint
   blueprint <repo_root>            verify project blueprint complete + phase agreement
-  all <skills_root> <repo_root>    structure + queue + sync + drift + identity + blueprint
+  completeness <repo_root>         once skills exist, require design-identity + domain docs + task-plan
+  all <skills_root> <repo_root>    structure + completeness + queue + sync + drift + identity + blueprint
 
 Exit 0 = green. Exit 1 = failures or items needing review (listed on stdout).
 Stdlib only. LLMs run this instead of self-grading; humans read the table.
@@ -217,6 +218,38 @@ def check_identity(repo_root):
         results.append((OK if r.returncode == 0 else BAD, "identity check complete"))
     return results
 
+# ---------- bootstrap completeness ----------
+def _blueprint_root(repo_root):
+    try:
+        cfg = json.load(open(os.path.join(repo_root, ".foundry", "config.json"), encoding="utf-8"))
+        return cfg.get("blueprint", {}).get("root", "docs/project")
+    except (OSError, json.JSONDecodeError):
+        return "docs/project"
+
+def check_completeness(repo_root):
+    """A bootstrap that produced skills must ALSO have produced the general
+    UI/UX definition, domain docs, and a task plan. Catches partial bootstraps
+    that otherwise pass every other check (skills look fine but no design /
+    no tasks)."""
+    skills_root = os.path.join(repo_root, "agent", "skills")
+    if not os.path.exists(os.path.join(skills_root, "SKILL.md")):
+        return [(OK, "completeness: skills not generated yet — skip")]
+    results = []
+    design = os.path.join(repo_root, "docs", "stack", "design-identity.md")
+    results.append((OK if os.path.exists(design) else BAD,
+                    "completeness: docs/stack/design-identity.md (general UI/UX definition)"))
+    # at least one domain doc anywhere under docs/**/domain/
+    domain_docs = []
+    for r, _, files in os.walk(os.path.join(repo_root, "docs")):
+        if os.path.basename(r) == "domain":
+            domain_docs += [f for f in files if f.endswith(".md")]
+    results.append((OK if domain_docs else BAD,
+                    f"completeness: domain docs present ({len(domain_docs)} found)"))
+    task_plan = os.path.join(repo_root, _blueprint_root(repo_root), "task-plan.md")
+    results.append((OK if os.path.exists(task_plan) else BAD,
+                    "completeness: task-plan.md (tasks generated)"))
+    return results
+
 # ---------- blueprint gate ----------
 def check_blueprint(repo_root):
     bp_py = os.path.join(os.path.dirname(__file__), "foundry_blueprint_check.py")
@@ -248,6 +281,9 @@ if __name__ == "__main__":
     rc = 0
     if mode in ("structure", "all"):
         rc |= report(check_structure(sys.argv[2]))
+    if mode in ("completeness", "all"):
+        repo = sys.argv[2] if mode == "completeness" else sys.argv[3]
+        rc |= report(check_completeness(repo))
     if mode in ("queue", "all"):
         root = sys.argv[3] if mode == "all" else sys.argv[2]
         res, _ = check_queue(root)

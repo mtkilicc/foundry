@@ -37,7 +37,9 @@ description: >-
    leaf a **senior specialist on two axes**: fill **Capability mastery**
    (sub-capabilities, quality bar, states/edge cases, decision criteria, failure
    modes for that area) AND **Implementation mastery**. Specialize by domain
-   capability, not only by technology. Scaffold under `agent/skills/`; write in parallel.
+   capability, not only by technology. **UI leaves** also fill **UI surface I
+   deliver** anchored to `docs/stack/design-identity.md` (general UI/UX
+   definition). Scaffold under `agent/skills/`; write in parallel.
 6. SYNC — `python ../../scripts/foundry_sync.py <repo>`; ensure
    `docs/stack/agent-tooling.md` exists with enabled targets.
 7. TALENT — `../project-talent/SKILL.md` (identity docs + structure rules +

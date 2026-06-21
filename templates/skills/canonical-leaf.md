@@ -68,9 +68,19 @@ capability the description wouldn't route to?
 - Learned something beyond this component's scope (a policy, a cross-cutting
   fact)? Don't absorb it — emit a `finding` event for the evaluator to route.
 
-## UI composition (this project)
-- Identity: `docs/stack/design-identity.md` — use the **Feature UI kits** row for this domain.
-- Shell / kits: <real paths from fingerprint — never generic AppShell/shadcn defaults>
+## UI surface I deliver (UI leaves only — what this skill builds)
+*A UI leaf must know its target UI/UX, anchored to the general definition. Delete
+this section for backend-only leaves.*
+- **General definition:** `docs/stack/design-identity.md` (UX system + Feature UI
+  kit row for this domain) — this skill conforms to it, never reinvents it.
+- **Screens / components I render:** <the concrete views this skill owns>.
+- **Layout & placement:** <where they sit in the app shell / page scaffold>.
+- **Kits & tokens used:** <real components from the inventory — never generic
+  AppShell/shadcn defaults>.
+- **UX states I must render:** empty · loading · error · success (per the global
+  states table) — list the specific copy/treatment for this surface.
+- **Visual acceptance:** "looks like …" <the done-bar for this UI, referencing
+  the design language>.
 
 ## Backend patterns (this project)
 - Identity: `docs/stack/backend-identity.md` — mirror the listed app peer shape.

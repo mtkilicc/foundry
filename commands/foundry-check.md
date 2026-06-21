@@ -1,6 +1,6 @@
 ---
 description: Run Foundry's deterministic checks (structure / sync / drift / blueprint / queue / all)
-argument-hint: "[scope: all | structure | sync | drift | blueprint | queue]"
+argument-hint: "[scope: all | structure | completeness | sync | drift | identity | blueprint | queue]"
 ---
 
 Invoke the **foundry** skill to run close-out checks.

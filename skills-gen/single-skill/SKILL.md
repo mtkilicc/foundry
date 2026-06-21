@@ -35,7 +35,10 @@ description: >-
    quality bar, states/edge cases, decision criteria, failure modes) AND
    **Implementation mastery** (contract, decisions, gotchas, extension points),
    plus the **Evolution self-check**. Specialize by capability, not only tech —
-   never ship a generic router or a "we use <library>" stub.
+   never ship a generic router or a "we use <library>" stub. **UI leaves** must
+   fill **UI surface I deliver** (screens/components, layout, kits/tokens, the
+   empty/loading/error/success states, visual acceptance) anchored to
+   `docs/stack/design-identity.md` — create that general definition first if missing.
    Standalone utility: lean SKILL.md + scripts/ (deterministic steps),
    references/ (load-on-demand, "read X when Y"), assets/. Bulk lives
    in references (progressive disclosure). Description: third-person,

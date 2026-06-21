@@ -37,9 +37,11 @@ UI.** The design is dynamic/regenerable, not a copy of the provided one.
    **Anti-sameness law:** given the *same* input twice, pick a **different**
    focal area and palette. Distinctiveness is generated, not compared — there is
    no cross-project registry and no other repo to diff against.
-2. **DESIGN TOKENS** — decide concretely (with one-line rationale each): color
-   system (primary / accent / neutrals), typography pairing (display + body),
-   density (`spacious|balanced|dense`), radius + elevation, motion stance.
+2. **UX SYSTEM (general definition — required)** — fill the design-identity
+   **UX system** section: design language (color/type/density/radius/motion),
+   layout system (app shell, navigation, grid, page scaffold), global UX states
+   (empty/loading/error/success), and the interaction + accessibility baseline.
+   This is the project-wide UI/UX contract every UI leaf builds against.
 3. **SIGNATURE COMPONENTS** — name the components the focal area needs (specific,
    not "a card"); fill the signature table with ≥3 "do NOT default to" contrasts
    (e.g. *not* a generic shadcn dashboard).

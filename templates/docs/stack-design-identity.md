@@ -12,6 +12,40 @@ Status: {{shipped|building|planned}}
 {{USER_STATED_DIRECTION — e.g. "Dense ops console: dark-first, monospace
 metrics, floating nav, alarm-forward — not a marketing SaaS landing page."}}
 
+## UX system — GENERAL DEFINITION (required; the project-wide UI/UX contract)
+
+*Every UI skill builds against this. Greenfield: Foundry decides it (no code to
+mine). Fill concretely — these are decisions, not placeholders.*
+
+### Design language
+| concern | decision |
+|---|---|
+| color system | {{primary / accent / neutrals + dark/light}} |
+| typography | {{display + body pairing, scale}} |
+| density | {{spacious \| balanced \| dense}} |
+| radius / elevation | {{e.g. rounded-lg, soft shadows}} |
+| motion | {{e.g. 150ms ease, reduce-motion respected}} |
+
+### Layout system
+| concern | decision |
+|---|---|
+| app shell | {{header/sidebar/none; where global nav lives}} |
+| navigation | {{topnav \| sidebar \| tabs \| single-page}} |
+| grid / width | {{container widths, breakpoints}} |
+| page scaffold | {{title + actions + content pattern every page follows}} |
+
+### Global UX states (every screen must handle)
+| state | treatment |
+|---|---|
+| empty | {{illustration/text + primary action}} |
+| loading | {{skeleton \| spinner placement}} |
+| error | {{inline message pattern, not alert()}} |
+| success / feedback | {{toast \| inline confirmation}} |
+
+### Interaction & accessibility baseline
+- {{focus states, keyboard nav, disabled-while-submitting, aria labels}}
+- {{form validation pattern, destructive-action confirm}}
+
 ## Signature (what makes this project visually distinct)
 
 | element | this project | do NOT default to |

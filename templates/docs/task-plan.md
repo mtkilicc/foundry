@@ -15,6 +15,12 @@ Status: empty | draft | agreed
    component (FE leaf, BE leaf, or both for full-stack flows).
 4. Set `depends_on` for ordering; default unowned tasks get a `new_leaf`
    marker → create the leaf via `skills-gen/single-skill` first.
+5. **UI build tasks (required):** for every UI leaf, emit task(s) to build its
+   **UI surface** to the target UI/UX — implement the screens/components, the
+   layout, and the **empty/loading/error/success** states from that leaf's
+   *UI surface I deliver* section. Acceptance **must reference**
+   `docs/stack/design-identity.md` (the general definition), not just "renders".
+   A UI capability is not done until it reaches the defined UI/UX.
 
 ## Tasks
 
@@ -32,3 +38,5 @@ Status: empty | draft | agreed
 - Every MVP + v1 capability in `02-scope-phases.md` maps to ≥1 task.
 - Every task has an owning skill (or a `new_leaf` marker).
 - No task spans two domains without naming both skills + a hand-off.
+- **Every UI leaf has ≥1 UI-build task** that targets its UI surface + the
+  global UX states, with acceptance referencing `docs/stack/design-identity.md`.

@@ -11,6 +11,6 @@ routed child). The agent invokes scripts via the Shell tool.
 | `foundry_sync.py` | After canonical skill edits |
 | `foundry_skill_drift.py` | End of feature work |
 | `foundry_identity_check.py` | After stack-identity / project-talent |
-| `foundry_check.py` | Close-out (`structure` / `sync` / `drift` / `blueprint` / `all`) |
+| `foundry_check.py` | Close-out (`structure` / `completeness` / `sync` / `drift` / `identity` / `blueprint` / `all`) |
 
 Schema docs: `config-schema.md`, `queue-schema.md`, `blueprint-schema.md`.
