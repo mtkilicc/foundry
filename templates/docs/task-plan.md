@@ -21,16 +21,41 @@ Status: empty | draft | agreed
    *UI surface I deliver* section. Acceptance **must reference**
    `docs/stack/design-identity.md` (the general definition), not just "renders".
    A UI capability is not done until it reaches the defined UI/UX.
+6. **Weight every task** — score it 1–10 (see *Task weight* below).
+
+## Task weight (1–10) — set on every task
+
+Weight captures how **hard**, **complicated**, **big**, and **important** a task
+is. Use it for sequencing, parallelization, and where to focus review. Score each
+factor 1–5 with the rubric, combine, scale to 1–10.
+
+| factor | measures | 1 (low) | 5 (high) |
+|---|---|---|---|
+| **H** hardness | technical difficulty, novelty, unknowns | well-trodden, copy-paste | novel/research, high uncertainty |
+| **C** complexity | moving parts, integrations, edge cases | single unit, no deps | many components/states/edge cases |
+| **B** bigness | size / effort / surface area | tiny, one file | large, many files/screens |
+| **I** importance | criticality, blast radius, MVP-criticality | nice-to-have | core/blocking, costly if wrong |
+
+**Formula** (factor weights sum to 1, so `raw ∈ [1,5]`):
+```
+raw    = 0.30·H + 0.25·C + 0.20·B + 0.25·I
+weight = round( 1 + (raw − 1) × 2.25 )      # maps [1,5] → [1,10]; clamp to [1,10]
+```
+All factors = 1 → weight 1; all = 5 → weight 10.
+
+**Record as** `weight (H·C·B·I)` for auditability. Example `7 (H4·C3·B3·I5)`:
+`raw = .30·4 + .25·3 + .20·3 + .25·5 = 3.8` → `1 + (2.8 × 2.25) = 7.3` → **7**.
 
 ## Tasks
 
-| id | phase | task | domain | owning skill(s) | depends_on | status |
-|---|---|---|---|---|---|---|
-| T001 | MVP | | | `agent/skills/<…>` | — | todo |
-| T002 | MVP | | | | T001 | todo |
-| T003 | v1 | | | | — | todo |
+| id | phase | task | domain | owning skill(s) | weight (1-10) | depends_on | status |
+|---|---|---|---|---|---|---|---|
+| T001 | MVP | | | `agent/skills/<…>` | 7 (H4·C3·B3·I5) | — | todo |
+| T002 | MVP | | | | 4 (H2·C2·B2·I3) | T001 | todo |
+| T003 | v1 | | | | | — | todo |
 
 `status`: `todo` \| `in-progress` \| `done`
+`weight`: 1–10 from the formula below, shown with its `(H·C·B·I)` breakdown.
 `owning skill(s)`: canonical leaf path(s); `new_leaf:<domain>` if no leaf exists yet.
 
 ## Coverage check (Foundry verifies before declaring the plan agreed)
@@ -40,3 +65,5 @@ Status: empty | draft | agreed
 - No task spans two domains without naming both skills + a hand-off.
 - **Every UI leaf has ≥1 UI-build task** that targets its UI surface + the
   global UX states, with acceptance referencing `docs/stack/design-identity.md`.
+- **Every task has a `weight` (1-10)** computed from the formula, shown with its
+  `(H·C·B·I)` breakdown.
