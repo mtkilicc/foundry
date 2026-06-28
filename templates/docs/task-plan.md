@@ -9,7 +9,9 @@ Status: empty | draft | agreed
 
 ## How Foundry fills this
 
-1. Walk `02-scope-phases.md` (MVP, v1) and `04-domains.md` (domains + flows).
+1. Walk `02-scope-phases.md` (MVP, v1), `04-domains.md` (domains), and
+   `business-flows.md` (the end-to-end flows). **Every MVP business flow maps to
+   ≥1 task** — a flow with no task is a coverage gap, not a choice.
 2. Break each phase capability into shippable tasks (one PR-sized slice each).
 3. Assign the **owning skill** = the leaf whose `scope`/Owns covers that
    component (FE leaf, BE leaf, or both for full-stack flows).

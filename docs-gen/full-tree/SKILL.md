@@ -19,6 +19,11 @@ description: >-
    "see code"; tables for exhaustive lists; relative links only;
    cross-link the LEAF owning each concept; library assertions
    verified via `../../toolkit/context7/SKILL.md`, never from memory.
+   - **Business flows** — materialize `docs/project/business-flows.md` from
+     `../../templates/docs/business-flows.md`, expanding the blueprint
+     `core_flows`/`flow_detail` into one detail block per flow (actor → trigger →
+     steps → outcome → touches domains/skills → acceptance). This page OWNS flow
+     detail; `04-domains.md` only indexes it. Every MVP flow must appear.
 4. SCENARIO DELTAS
    - greenfield: domain docs are **intent** for agreed phase only (`Status: planned`);
      blueprint `01-scope-phases.md` is the scope authority.

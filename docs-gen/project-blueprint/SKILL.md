@@ -151,7 +151,10 @@ dynamic-UI-redesign addenda in Project states above.*
    blocking gaps = `FOUNDRY:TBD`; ask the batched gap questions, then replace.
 3. **DECOMPOSE (sizing engine)** — Foundry decides the concrete shape from
    `archetype` + flows. Default **3** each unless the user gave a number:
-   - **business flows** → `04-domains.md` cross-domain flows (trigger→steps→outcome)
+   - **business flows** → `04-domains.md` cross-domain flows (trigger→steps→outcome).
+     These are the MVP definition: full-tree later materializes them into
+     `docs/project/business-flows.md` (one detail block each), and the task plan
+     must cover every MVP flow with ≥1 task (a flow with no task is a gap).
    - **domains** → group flows into capability areas (each becomes a future leaf)
    - **backend models** → core entities + relationships → `03-architecture.md`
    - **pages/screens** → per domain, with the focal area from design identity
