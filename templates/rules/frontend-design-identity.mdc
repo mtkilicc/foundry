@@ -1,0 +1,27 @@
+---
+description: This project's visual identity — tokens, shell, and component table
+globs: frontend/**/*
+alwaysApply: false
+---
+
+# Frontend design identity (this project only)
+
+Full inventory: [`docs/stack/design-identity.md`](../../docs/stack/design-identity.md).
+
+## Signature reminder
+
+{{ONE_LINE_FROM_DESIGN_IDENTITY_SIGNATURE_TABLE}}
+
+## Mandatory composition
+
+| task | use (this repo) | never |
+|---|---|---|
+| app shell | `{{shell components}}` | generic AppShell from memory |
+| dashboards | `{{chart kit paths}}` | tutorial card grid |
+| operator alerts | `{{AlertsBell / etc}}` | duplicate notification UI |
+| data fetching | `{{TanStack Query + client path}}` | bare fetch |
+
+## Uniqueness
+
+This rule was **mined from this repository**. On the next Foundry project,
+regenerate — do not copy this file's table rows.

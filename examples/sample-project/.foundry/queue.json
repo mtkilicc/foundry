@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "events": [
+    {"id": "evt-001", "ts": "2026-06-11T09:00:00Z", "type": "new_artifact",
+     "by_skill": "docs-gen/single-doc", "summary": "created price-tracking doc",
+     "payload": {"path": "docs/backend/domain/price-tracking.md"}, "status": "pending", "routed_to": null},
+    {"id": "evt-002", "ts": "2026-06-11T09:10:00Z", "type": "finding",
+     "by_skill": "skills/backend/price-tracking", "summary": "every page shows prices via PriceCard — project-wide policy",
+     "payload": {"kind": "policy", "suggest": "rules-gen/single-rule"}, "status": "pending", "routed_to": null},
+    {"id": "evt-003", "ts": "2026-06-11T09:20:00Z", "type": "mcp_proposal",
+     "by_skill": "skills/backend/price-tracking", "summary": "need DB introspection for migration checks",
+     "payload": {"mcp": "Postgres", "capability": "db-introspection"}, "status": "pending", "routed_to": null}
+  ]
+}

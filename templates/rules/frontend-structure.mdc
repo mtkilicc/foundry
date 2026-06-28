@@ -1,0 +1,36 @@
+---
+description: Frontend structure — compose this project's UI kit; no ad-hoc markup
+globs: frontend/**/*
+alwaysApply: false
+---
+
+# Frontend structure (generation law)
+
+**Identity doc:** [`docs/stack/design-identity.md`](../../docs/stack/design-identity.md)
+— lists *this project's* components and visual signature. This rule is
+*structure only*; it does not prescribe a generic design system.
+
+## Principle
+
+Every screen **composes** primitives from this repo's inventory. Generation
+must not import patterns from other projects or framework tutorials.
+
+## Change-type → action
+
+| When you… | You must… |
+|---|---|
+| build a page/screen | read `design-identity.md` first; use listed shell + kits |
+| need a chart/table/form | use a row from **Feature UI kits** — never hand-roll |
+| need a new visual pattern | extend `components/ui/` + update `design-identity.md` same PR |
+| unsure which component | grep `components/ui/` and modules — do not invent names |
+
+## Do / Don't
+
+DO:    compose `RootLayout` + `MetricTimeseriesChart` per design-identity.md
+DON'T: copy layout from another repo; use default shadcn dashboard templates;
+       inline `style={{}}` spacing; raw `<table>`/recharts when a kit exists
+
+## Skill boundary
+
+Leaf skills name **which kit** applies to their domain; this rule enforces
+**how** to build. Conflicts → this rule wins; update the skill's kit pointer.

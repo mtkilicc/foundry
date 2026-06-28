@@ -1,0 +1,34 @@
+---
+description: Backend structure — apps shape, services layer, auth and SSE paths
+globs: backend/**/*
+alwaysApply: false
+---
+
+# Backend structure (generation law)
+
+**Identity doc:** [`docs/stack/backend-identity.md`](../../docs/stack/backend-identity.md).
+
+## Principle
+
+Match **this project's** app layout and cross-cutting paths — not Django/DRF
+tutorials or patterns from other Foundry projects.
+
+## Change-type → action
+
+| When you… | You must… |
+|---|---|
+| add an app/feature | mirror `apps/<peer>/` file set from backend-identity.md |
+| add business logic | `services.py`; keep views thin |
+| add authz | reuse `apps/core/permissions.py` — no parallel system |
+| add live updates | publish via documented SSE bus |
+| add periodic work | Celery task in app `tasks.py` |
+
+## Do / Don't
+
+DO:    serializer validates → service method → thin viewset
+DON'T: thick views; new auth path; patterns copied from another repo's AGENTS.md
+
+## Skill boundary
+
+Leaf skills own domain invariants; this rule owns **shape**. Update
+`backend-identity.md` when a new cross-cutting pattern ships.

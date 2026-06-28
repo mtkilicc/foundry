@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "canonical_skills_root": "agent/skills",
+  "post_job": {
+    "enabled": true,
+    "run_drift_check": true,
+    "enqueue_proposals": true
+  },
+  "render_targets": {
+    "claude-code": {
+      "enabled": true,
+      "skills_root": ".claude/skills"
+    },
+    "cursor": {
+      "enabled": true,
+      "skills_root": ".cursor/skills",
+      "routing_rule": ".cursor/rules/00-routing.mdc"
+    },
+    "generic": {
+      "enabled": true
+    }
+  },
+  "drift": {
+    "auto_reject_kinds": ["doc_status_only", "already_covered"],
+    "needs_review_kinds": [
+      "code_map_gap",
+      "trigger_gap",
+      "orchestrator_row",
+      "new_leaf_candidate"
+    ]
+  },
+  "blueprint": {
+    "root": "docs/project",
+    "mode": "multi-file",
+    "gate_required": true,
+    "import_from": null,
+    "tech_stack": {
+      "extract_from_repo": true,
+      "require_user_confirm": true
+    }
+  }
+}

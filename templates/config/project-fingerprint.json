@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "project_name": "<repo-name>",
+  "visual_signature": "<3-8 words — e.g. dark ops console, alarm-forward>",
+  "mined_from_commit": "<git HEAD at bootstrap>",
+  "forbidden_cross_project": [
+    "AppShell",
+    "PriceCard",
+    "generic shadcn dashboard",
+    "sidebar layout from tutorial"
+  ],
+  "frontend": {
+    "root": "frontend/src",
+    "ui_primitives_glob": "frontend/src/components/ui/*.tsx",
+    "shell_component": "<e.g. RootLayout>",
+    "chart_kit_glob": "frontend/src/components/charts/*.tsx"
+  },
+  "backend": {
+    "root": "backend",
+    "apps_glob": "backend/apps/*/",
+    "permissions_anchor": "backend/apps/core/permissions.py"
+  },
+  "stack_docs": {
+    "design_identity": "docs/stack/design-identity.md",
+    "backend_identity": "docs/stack/backend-identity.md"
+  }
+}

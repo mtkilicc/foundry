@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "note": "Intake record enforced by foundry_blueprint_check.py. Every blocking slot must have a value AND a source. Sources user|seed|repo|derive are allowed freely; default|foundry-decided are allowed ONLY when delegated=true (the user explicitly handed off). Design/creativity slots are not blocking and live elsewhere.",
+  "delegated": false,
+  "delegated_by": null,
+  "delegated_at": null,
+  "slots": {
+    "situation": { "value": "", "source": "" },
+    "consuming_tools": { "value": "", "source": "" },
+    "project_name": { "value": "", "source": "" },
+    "pitch": { "value": "", "source": "" },
+    "archetype": { "value": "", "source": "" },
+    "personas": { "value": "", "source": "" },
+    "auth_model": { "value": "", "source": "" },
+    "core_flows": { "value": "", "source": "" },
+    "domains": { "value": "", "source": "" },
+    "mvp_scope": { "value": "", "source": "" },
+    "v1_scope": { "value": "", "source": "" }
+  }
+}
