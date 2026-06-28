@@ -217,6 +217,18 @@ On approval → update agreement JSON + phase log in `01-scope-phases.md`.
 | intent change | blueprint first, then domain docs via docs-gen |
 | phase shipped | `status: shipped` in phases + matching domain doc Status |
 
+### Feature change on an existing/shipped project (the modify delta)
+
+Add / change / remove a capability — Foundry produces the **delta in every layer**,
+never a rebuild. Each maps to an existing route/command; tasks obey the immutability
+rule (`templates/docs/task-plan.md` § Re-run / modify):
+
+| request | doc | skill | rule | task |
+|---|---|---|---|---|
+| **add feature** | new/updated domain page (`single-doc`) + a `business-flows.md` flow | add/extend owning leaf (`skills-gen/single-skill`) | a rule only if it sets a new convention (`rules-gen/single-rule`) | **append** build tasks (cover the new flow) |
+| **modify feature** | update the affected domain page + flow | update the owning leaf (`post-job-update` if shipped) | usually none | append tasks; **`done` tasks are superseded by new ones, not edited; `in-progress` → ask** |
+| **remove feature** | mark the capability obsolete in its doc + flow (do not delete history) | deprecate/trim the leaf (keep the file; note removal) | retire the rule if it no longer applies | append a **`Remove X` decommission task**; never delete historical task rows |
+
 Append `blueprint_change` event to queue when phases change materially.
 
 ## Approval (mandatory — single consolidated document)

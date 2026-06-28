@@ -12,6 +12,9 @@ Invoke the **foundry** skill to produce the task plan.
 - **Weight every task 1–10** via the formula in `templates/docs/task-plan.md`
   (factors: hardness H, complexity C, bigness B, importance I); record as
   `weight (H·C·B·I)`.
-- Re-run appends only tasks for new scope; never regenerates completed rows.
+- **Re-run / modify = append-only (task immutability).** Never edit, renumber, or
+  delete a `done` task — supersede it with a NEW task. An `in-progress` task is
+  changed only after **asking the user**; `todo` tasks may be edited in place. See
+  *Re-run / modify — task immutability* in `templates/docs/task-plan.md`.
 
 Scope: $ARGUMENTS

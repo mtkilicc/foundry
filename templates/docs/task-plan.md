@@ -60,6 +60,26 @@ All factors = 1 → weight 1; all = 5 → weight 10.
 `weight`: 1–10 from the formula below, shown with its `(H·C·B·I)` breakdown.
 `owning skill(s)`: canonical leaf path(s); `new_leaf:<domain>` if no leaf exists yet.
 
+## Re-run / modify — task immutability (NEVER rewrite work)
+
+On a re-run or a modify request, the existing plan is a **ledger, not a draft**.
+Foundry **appends**; it does not rewrite history.
+
+- **`done` task → immutable.** Never edit, renumber, reword, reorder, or delete a
+  `done` task. If a change touches that capability, write a **NEW** task that
+  supersedes it (reference the prior id in the task text). The original work/commit
+  stays recoverable.
+- **`in-progress` task → ASK first.** If a change genuinely needs an in-progress
+  task altered, Foundry does **not** decide silently — it asks the user (or, when
+  fully delegated, queues the question and writes a new task instead of mutating).
+- **`todo` task (never started) → editable** in place (not yet work).
+- **Removing a feature ≠ deleting tasks.** Add a `Remove X` decommission task and
+  mark the capability obsolete in the docs; keep the historical rows.
+- **Subtasks (optional).** A large task may split into sub-tasks with `T0NN.n` ids
+  (e.g. `T012.1`) whose `depends_on` names the parent `T012` — a main-task →
+  sub-task tree the dev loop / branch tracking can follow. Subtasks inherit the
+  parent's immutability state.
+
 ## Coverage check (Foundry verifies before declaring the plan agreed)
 
 - Every MVP + v1 capability in `02-scope-phases.md` maps to ≥1 task.
