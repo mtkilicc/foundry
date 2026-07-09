@@ -159,7 +159,12 @@ def check_sync(repo_root):
     results = []
     for line in lines:
         if line.startswith("[OK]") or line.startswith("[FAIL]"):
-            results.append((line[1:3], line[5:]))
+            # Parse by the first "]" — a fixed-width slice mis-reads the
+            # 6-char "[FAIL]" tag as "FA", so failures never matched BAD
+            # and identity/blueprint (and their "all" sub-blocks) always
+            # exited 0 even on a fully failing repo.
+            close = line.index("]")
+            results.append((line[1:close], line[close + 2:]))
     if r.returncode != 0 and not any(x[0] == BAD for x in results):
         results.append((BAD, "sync check failed"))
     if not results:
@@ -179,7 +184,12 @@ def check_drift(repo_root):
     results = []
     for line in (r.stdout or "").strip().splitlines():
         if line.startswith("[OK]") or line.startswith("[FAIL]"):
-            results.append((line[1:3], line[5:]))
+            # Parse by the first "]" — a fixed-width slice mis-reads the
+            # 6-char "[FAIL]" tag as "FA", so failures never matched BAD
+            # and identity/blueprint (and their "all" sub-blocks) always
+            # exited 0 even on a fully failing repo.
+            close = line.index("]")
+            results.append((line[1:close], line[close + 2:]))
     report_path = os.path.join(repo_root, ".foundry", "skill-drift-report.json")
     if os.path.exists(report_path):
         try:
@@ -213,7 +223,12 @@ def check_identity(repo_root):
     results = []
     for line in (r.stdout or "").strip().splitlines():
         if line.startswith("[OK]") or line.startswith("[FAIL]"):
-            results.append((line[1:3], line[5:]))
+            # Parse by the first "]" — a fixed-width slice mis-reads the
+            # 6-char "[FAIL]" tag as "FA", so failures never matched BAD
+            # and identity/blueprint (and their "all" sub-blocks) always
+            # exited 0 even on a fully failing repo.
+            close = line.index("]")
+            results.append((line[1:close], line[close + 2:]))
     if not results:
         results.append((OK if r.returncode == 0 else BAD, "identity check complete"))
     return results
@@ -263,7 +278,12 @@ def check_blueprint(repo_root):
     results = []
     for line in (r.stdout or "").strip().splitlines():
         if line.startswith("[OK]") or line.startswith("[FAIL]"):
-            results.append((line[1:3], line[5:]))
+            # Parse by the first "]" — a fixed-width slice mis-reads the
+            # 6-char "[FAIL]" tag as "FA", so failures never matched BAD
+            # and identity/blueprint (and their "all" sub-blocks) always
+            # exited 0 even on a fully failing repo.
+            close = line.index("]")
+            results.append((line[1:close], line[close + 2:]))
     if not results:
         results.append((OK if r.returncode == 0 else BAD, "blueprint check complete"))
     return results
